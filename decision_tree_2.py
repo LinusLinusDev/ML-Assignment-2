@@ -1,6 +1,7 @@
 # -------------------------------------------------------------------------
-# AUTHOR: Linus Palm FILENAME:
-# decision_tree_2.py SPECIFICATION: This program generates and tests three different decision trees using three
+# AUTHOR: Linus Palm
+# FILENAME: decision_tree_2.py
+# SPECIFICATION: This program generates and tests three different decision trees using three
 # different training sets and one test set. At the end, the average accuracy of each training set is output.
 # FOR: CS 4210- Assignment #2
 # TIME SPENT: 6 hours
