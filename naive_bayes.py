@@ -24,6 +24,7 @@ with open('weather_training.csv', 'r') as csvfile:
             dbTraining.append(row)
         else:
             Header = row
+            Header.append('Confidence')
 
 # transform the original training features to numbers and add them to the 4D array X.
 # For instance Sunny = 1, Overcast = 2, Rain = 3, so X = [[3, 1, 1, 2], [1, 3, 2, 2], ...]]
@@ -80,11 +81,12 @@ for sample in dbTest:
     X_test.append(numbersample)
 
 # printing the header of the solution
-print(' '.join(Header), 'Confidence')
+layout = "{:<5}{:<10}{:<13}{:<10}{:<8}{:<12}{:<12}"
+print(layout.format(*Header))
 
 # use your test samples to make probabilistic predictions. For instance: clf.predict_proba([[3, 1, 2, 1]])[0]
 for idx, sample in enumerate(X_test):
     predictedClass = clf.predict([sample])[0]
     confidence = clf.predict_proba([sample])[0][predictedClass - 1]
     if confidence >= 0.75:
-        print(' '.join(dbTest[idx][0:5]), 'No' if predictedClass == 1 else 'Yes', round(confidence, 2))
+        print(layout.format(*dbTest[idx][0:5], 'No' if predictedClass == 1 else 'Yes', round(confidence, 2)))
